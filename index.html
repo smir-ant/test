@@ -4,37 +4,28 @@
     <title>Image Generator</title>
     <script>
         window.addEventListener('load', () => {
-            // Создаем canvas элемент
             const canvas = document.createElement('canvas');
             canvas.width = 50;
             canvas.height = 50;
-            
-            // Получаем контекст для рисования
             const ctx = canvas.getContext('2d');
-            
-            // Рисуем красный фон
+
             ctx.fillStyle = '#ff0000';
             ctx.fillRect(0, 0, 50, 50);
-            
-            // Рисуем белую цифру 1
+
             ctx.fillStyle = '#ffffff';
             ctx.font = '40px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText('1', 25, 25);
-            
-            // Конвертируем canvas в Blob
-            canvas.toBlob(blob => {
-                // Создаем URL для Blob
-                const url = URL.createObjectURL(blob);
-                
-                // Перенаправляем на URL с изображением
-                window.location.href = url;
-            }, 'image/png');
+
+            // Конвертируем canvas в data URL
+            const dataURL = canvas.toDataURL("image/png");
+
+            // Перенаправляем на data URL
+            window.location.href = dataURL;
         });
     </script>
 </head>
 <body>
-<!-- Страница будет сразу перенаправлена на изображение -->
 </body>
 </html>
